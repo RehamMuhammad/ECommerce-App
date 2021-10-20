@@ -1,0 +1,16 @@
+<form class="row g-3" #productsForm="ngForm" (ngSubmit)="onSubmit()" >
+    <div class="col-auto">
+      <label for="email" class="visually-hidden">Name</label>
+      <input type="email" readonly class="form-control-plaintext" id="email" value="email@example.com"
+      [(ngModel)]="model.name" name="email"
+      #email="ngModel">
+    </div>
+    <div class="col-auto">
+      <label for="pass" class="visually-hidden">Password</label>
+      <input type="password" class="form-control" id="pass" placeholder="Password"  [(ngModel)]="model.name" name="pass"
+      #pass="ngModel" required>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+    </div>
+  </form>

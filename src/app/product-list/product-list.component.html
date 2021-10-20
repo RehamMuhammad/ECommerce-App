@@ -1,0 +1,8 @@
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-4" >
+    <div class="col" *ngFor="let product of productlist; let i = index">
+      <app-product-item
+        [productItem]="product"
+        (sendProductItem)="receiveProductItem($event)"
+      ></app-product-item>
+    </div>
+  </div>
