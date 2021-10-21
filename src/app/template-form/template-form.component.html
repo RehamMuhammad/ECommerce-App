@@ -1,16 +1,47 @@
-<form class="row g-3" #productsForm="ngForm" (ngSubmit)="onSubmit()" >
-    <div class="col-auto">
-      <label for="email" class="visually-hidden">Name</label>
-      <input type="email" readonly class="form-control-plaintext" id="email" value="email@example.com"
-      [(ngModel)]="model.name" name="email"
-      #email="ngModel">
+<form class="row container mt-5 py-3 border border-1" #loginForm="ngForm" (ngSubmit)="submitForm(loginForm)">
+  <div class="col-12">
+    <label for="email" class="form-label fs-5"
+      >Email Address</label
+    >
+    <input
+      type="email"
+      class="form-control mb-3"
+      id="email"
+      placeholder="name@example.com"
+      required
+      name="email"
+      #email=ngModel
+      ngModel
+      pattern="[a-z]+[a-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$" 
+
+    />
+    <div class="alert alert-danger" *ngIf="email.touched && !email.valid">
+    <div *ngIf="email.errors?.required" style="color: red;">
+       The Email Is required
     </div>
-    <div class="col-auto">
-      <label for="pass" class="visually-hidden">Password</label>
-      <input type="password" class="form-control" id="pass" placeholder="Password"  [(ngModel)]="model.name" name="pass"
-      #pass="ngModel" required>
+     <div *ngIf="email.errors?.pattern" style="color: red;">
+       you must enter an email
     </div>
-    <div class="col-auto">
-      <button type="submit" class="btn btn-primary mb-3">Confirm identity</button>
+  </div>
+  </div>
+  <div class="col-12">
+    <label for="password" class="form-label mb-3 fs-5"
+      >Password</label
+    >
+    <input class="form-control mb-3" id="password" name="password" required
+    #password=ngModel
+    ngModel />
+
+    <div class="alert alert-danger" *ngIf="password.touched && !password.valid">
+      <div *ngIf="password.errors?.required" style="color: red;">
+         The Password field Is required
+      </div>
+     
     </div>
-  </form>
+  </div>
+  <div class="col-12">
+    <button type="submit" style="width: 100%" class="btn btn-primary mb-3">
+      Login
+    </button>
+  </div>
+</form>
