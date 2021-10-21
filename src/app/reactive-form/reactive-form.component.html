@@ -1,0 +1,126 @@
+<form [formGroup]="registerForm" (ngSubmit)="submitReactiveForm()"
+    class="row container mt-5 py-3 border border-1">
+    <div class="col-12">
+        <label for="name" class="form-label fs-5">Name</label>
+        <input
+            type="text"
+            class="form-control mb-3"
+            id="name"
+            placeholder="Enter your name Please!"
+            name="name"
+            formControlName="name"
+            [ngStyle]="{'border':registerFormControls.name.touched && !registerFormControls.name.valid? '2px solid red' : '' } "
+            />
+    </div>
+
+    <div class="alert alert-danger" *ngIf="registerFormControls.name.touched && !registerFormControls.name.valid ">
+        <div *ngIf="registerFormControls.name.errors?.required" style="color: red">
+          The Name field Is required.
+        </div>
+      </div>
+
+    <div class="col-12">
+        <label for="email" class="form-label fs-5">Email Address</label>
+        <input
+            type="email"
+            class="form-control mb-3"
+            id="email"
+            placeholder="Enter your Email Please!"
+            name="email"
+            formControlName="email"
+            [ngStyle]="{'border':registerFormControls.email.touched && !registerFormControls.email.valid? '2px solid red' : '' } "
+
+            />
+    </div>
+    <div class="alert alert-danger" *ngIf="registerFormControls.email.touched && !registerFormControls.email.valid ">
+    <div *ngIf="registerFormControls.email.errors?.required" style="color: red">
+        The Email Is required.
+      </div>
+      <div *ngIf="registerFormControls.email.errors?.email" style="color: red">
+        You must enter an email.
+    </div>
+</div>
+
+    <div class="col-12">
+        <label for="username" class="form-label fs-5">User Name</label>
+        <input
+            type="text"
+            class="form-control mb-3"
+            id="username"
+            placeholder="Enter your User name Please!"
+            name="name"
+            formControlName="userName"
+            [ngStyle]="{'border':registerFormControls.userName.touched && !registerFormControls.userName.valid? '2px solid red' : '' } "
+
+            />
+    </div>
+    <div class="alert alert-danger" *ngIf="registerFormControls.userName.touched && !registerFormControls.userName.valid ">
+        <div *ngIf="registerFormControls.userName.errors?.required" style="color: red">
+            The User Name Is required.
+          </div>
+          <div *ngIf="registerFormControls.userName.errors?.pattern" style="color: red">
+            The User name mustn't have any white spaces.
+        </div>
+    </div>
+ 
+    <div class="col-12">
+        <label for="password" class="form-label mb-3 fs-5">Password</label>
+        <input
+            class="form-control mb-3"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Enter your Password Please!"
+            formControlName="password"
+            [ngStyle]="{'border':registerFormControls.password.touched && !registerFormControls.password.valid? '2px solid red' : '' } "
+
+
+            />
+    </div>
+    <div class="alert alert-danger" *ngIf="registerFormControls.password.touched && !registerFormControls.password.valid ">
+        <div *ngIf="registerFormControls.password.errors?.required" style="color: red">
+            The Password Is required.
+          </div>
+          <div *ngIf="registerFormControls.password.errors?.minLength" style="color: red">
+            The minimum length should be at least 8 characters.
+        </div>
+        <div *ngIf="registerFormControls.password.errors?.pattern" style="color: red">
+            The Password should contain at least one 
+            lowercase, one uppercase, at least one digit, & special character [*@%$# ] and mustn't have any white spaces.
+        </div>
+    </div>
+
+    <div class="col-12">
+        <label for="confirmPassword" class="form-label mb-3 fs-5">Confirm Password</label>
+        <input
+            class="form-control mb-3"
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Repeat your Password Please!"
+            formControlName="confirmPassword"
+            [ngStyle]="{'border':registerFormControls.confirmPassword.touched && !registerFormControls.confirmPassword.valid? '2px solid red' : '' } "
+
+            />
+    </div>
+    <div class="alert alert-danger" *ngIf="registerFormControls.confirmPassword.touched && !registerFormControls.confirmPassword.valid ">
+        <div *ngIf="registerFormControls.confirmPassword.errors?.required" style="color: red">
+            This Field Is required.
+          </div>
+    </div>
+    <div class="alert alert-danger" *ngIf="registerFormControls.confirmPassword.value!==registerFormControls.password.value">
+    <div style="color: red">
+        The Repeated Password Isn't matched.
+    </div>
+</div>
+
+    <div class="col-2">
+        <button type="submit" style="width: 100%" class="btn btn-success mb-3" [disabled]=!registerForm.valid>
+            Register
+        </button>
+    </div>
+
+    <div>
+        <h3 class="text-center">Already have an account! login</h3>
+    </div>
+</form>
