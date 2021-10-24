@@ -108,19 +108,19 @@
             This Field Is required.
           </div>
     </div>
-    <div class="alert alert-danger" *ngIf="registerFormControls.confirmPassword.value!==registerFormControls.password.value">
-    <div style="color: red">
-        The Repeated Password Isn't matched.
+    <div class="alert alert-danger" *ngIf="registerFormControls.confirmPassword.touched && registerFormControls.confirmPassword.valid ">
+   <div style="color: red" *ngIf="registerFormControls.confirmPassword.value!==registerFormControls.password.value">
+            The Repeated Password Isn't matched.
     </div>
 </div>
 
     <div class="col-2">
-        <button type="submit" style="width: 100%" class="btn btn-success mb-3" [disabled]=!registerForm.valid>
+        <button type="submit" style="width: 100%" class="btn btn-success mb-3">
             Register
         </button>
     </div>
 
     <div>
-        <h3 class="text-center">Already have an account! login</h3>
+        <h3 class="text-center">Already have an account! <a class="nav-link"  routerLink="/login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">login</a></h3>
     </div>
 </form>

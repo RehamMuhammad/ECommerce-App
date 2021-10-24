@@ -18,7 +18,7 @@ export class ReactiveFormComponent implements OnInit {
       email: new FormControl("",[ Validators.required , Validators.email] ),
       userName: new FormControl("",[ Validators.required , Validators.pattern('^[-a-zA-Z0-9-()]+(\S+[-a-zA-Z0-9-()]+)*$')] ),
       password : new FormControl("",[ Validators.required , Validators.minLength(8),
-                                      Validators.pattern('^(?=.[a-z])(?=.[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$')] ),
+                                      Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')] ),
       confirmPassword : new FormControl("",Validators.required  )
   })
 }

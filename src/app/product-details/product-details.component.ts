@@ -1,18 +1,14 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {ProductItemComponent} from "../product-item/product-item.component"
-import {Product} from "../product";
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Product } from '../product';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  selector: 'app-product-details',
+  templateUrl: './product-details.component.html',
+  styleUrls: ['./product-details.component.css']
 })
-export class ProductListComponent implements OnInit {
 
-
-  @ViewChild(ProductItemComponent) productData : any;
-
+export class ProductDetailsComponent implements OnInit {
   productlist: Array<Product> = [
     {
       id: 1,
@@ -256,17 +252,12 @@ export class ProductListComponent implements OnInit {
     }
   ]
 
-  constructor(private router : Router) { }
+  productItem : any
+  constructor(private activateRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
-  }
-  
-  ngAfterViewInit(){
-    console.log(this.productData.productName)
-  }
-  receiveProductItem(product: any){
-    console.log("FROM PARENT",product)
-    this.router.navigate([`product-details/${product.id}`])
-  }
+    this.activateRoute.params.subscribe(params => {
+      this.productItem =  this.productlist.filter(product => product.id == params.id)[0];
+    }) }
 
 }
