@@ -8,6 +8,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuard } from './auth.guard';
 import {ProtectedComponent} from './protected/protected.component'
 import { SaveRegisterationGuard } from './save-registeration.guard';
+import {CounterComponent} from './counter/counter.component';
+import {ProductsListComponent} from './products-list/products-list.component';
+import {ProductDynamicDetailsComponent} from './product-dynamic-details/product-dynamic-details.component'
 
 
 
@@ -37,6 +40,15 @@ const routes: Routes = [
 },
 {
   path: 'product-details/:id', component : ProductDetailsComponent
+},
+{
+  path: 'cart', component : CounterComponent
+},
+{
+  path: 'productsDynamic',
+  children: [ { path:'', component: ProductsListComponent }, { path:'cart', component: CounterComponent },{
+    path: 'product-dynamic-details/:id', component : ProductDynamicDetailsComponent
+  }, ]
 },
 {
   path: '**', component : NotFoundComponent

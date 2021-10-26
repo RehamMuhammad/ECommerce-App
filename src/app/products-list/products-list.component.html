@@ -1,0 +1,20 @@
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-4" >
+    <div class="col" *ngFor="let product of products; let i = index">
+      <a [routerLink]="['product-dynamic-details', product.id]" > 
+        <div class="card my-2 me-2" style="width: 25rem;">
+            <img [src]="product.image" class="card-img-top img-thumbnail" alt="..." />
+            <div class="card-body">
+              <h4 class="card-title">{{ product.title }}</h4>
+              <h5 class="card-text">{{ product.category }}</h5>
+              <h6 class="card-text">Price: {{ product.price | egpCuurncy}} </h6>
+              <p class="card-text" [ngStyle]="{'color':product.rating.count_in_stock === 0? 'red' : 'green' } ">Count: {{ product.rating.count}} </p>
+              <a routerLink="cart" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ><button class="btn btn-primary">Add to Cart</button></a>
+           </div>
+            <div class="card-footer">
+              <small class="text-muted"  > {{ product.rating.count | availability }}</small>
+            </div>
+          </div>
+          </a>
+    </div>
+  </div>
+
