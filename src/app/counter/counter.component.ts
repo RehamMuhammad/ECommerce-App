@@ -1,26 +1,36 @@
 import { CounterService } from './../counter.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-counter',
   templateUrl: './counter.component.html',
   styleUrls: ['./counter.component.css']
 })
-export class CounterComponent implements OnInit {
+export class CounterComponent implements OnInit ,OnChanges{
 
-  counter : any;
+  cartList : any;
 
   constructor(private counterService : CounterService) { }
 
   ngOnInit(): void {
-    console.log(this.counterService.getCounter().subscribe((counter) => {this.counter=counter}))
+    this.counterService.getCartList().subscribe((cartList) => {this.cartList=cartList})
   }
 
-  increaseCount(){
-    this.counterService.setCounter(this.counter+1)
+  increaseCount(item:any){
+    this.counterService.setCartList(item)
   }
-  decreaseCount(){
-    this.counterService.setCounter(this.counter-1)
+  decreaseCount(item:any){
+    this.counterService.decreaseCartList(item)
   }
+
+  deleteItem(deletedItem: any, i:any) {
+    this.counterService.removeItem(deletedItem,i)
+  }
+
+ ngOnChanges():void{
+  this.counterService.getCartList().subscribe((cartList) => {this.cartList=cartList})
+  console.log(this.cartList)
+}
+
 
 }

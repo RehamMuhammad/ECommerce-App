@@ -8,13 +8,17 @@
               <h5 class="card-text">{{ product.category }}</h5>
               <h6 class="card-text">Price: {{ product.price | egpCuurncy}} </h6>
               <p class="card-text" [ngStyle]="{'color':product.rating.count_in_stock === 0? 'red' : 'green' } ">Count: {{ product.rating.count}} </p>
-              <a routerLink="cart" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ><button class="btn btn-primary">Add to Cart</button></a>
            </div>
             <div class="card-footer">
               <small class="text-muted"  > {{ product.rating.count | availability }}</small>
             </div>
           </div>
           </a>
+          <button (click)="addToCart(product)" class="btn btn-primary">Add to Cart</button>
+
     </div>
   </div>
+
+
+  <!-- //<a routerLink="cart" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" ></a> -->
 

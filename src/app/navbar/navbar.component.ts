@@ -13,7 +13,9 @@ export class NavbarComponent implements OnInit {
   constructor(private counterService : CounterService) { }
 
   ngOnInit(): void {
- this.counter = this.counterService.getCounter()
+this.counterService.getCartList().subscribe((data=>{
+  this.counter=data.length
+}))
 
   }
 

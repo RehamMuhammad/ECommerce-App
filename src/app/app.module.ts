@@ -18,7 +18,8 @@ import { ProductDynamicDetailsComponent } from './product-dynamic-details/produc
 //Pipes
 import { EgpCuurncyPipe } from './egp-cuurncy.pipe';
 import {RequestInterceptor} from './request.interceptor';
-import { LoaderComponent } from './loader/loader.component'
+import { LoaderComponent } from './loader/loader.component';
+
 
 
  
@@ -34,7 +35,8 @@ import { LoaderComponent } from './loader/loader.component'
     DynamicProductDetailsComponent,
     EgpCuurncyPipe,
     ProductDynamicDetailsComponent,
-    LoaderComponent
+    LoaderComponent,
+    
     
   ],
   imports: [
